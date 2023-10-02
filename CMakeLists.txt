@@ -88,9 +88,10 @@ set(CUTLASS_TEST_LEVEL "0" CACHE STRING "Level of tests to compile.")
 find_package(Python3 3.5 COMPONENTS Interpreter REQUIRED)
 
 # Install cutlass_library Python package
+# KGF: here is the problem:
 execute_process(
   WORKING_DIRECTORY ${CUTLASS_DIR}/python
-  COMMAND ${Python3_EXECUTABLE} ${CUTLASS_DIR}/python/setup_library.py develop --user
+  COMMAND ${Python3_EXECUTABLE} ${CUTLASS_DIR}/python/setup_library.py install #develop --user
   RESULT_VARIABLE cutlass_lib_GENERATOR_INSTALL_RESULT
   OUTPUT_FILE ${CMAKE_CURRENT_BINARY_DIR}/cutlass_library_installation.log
   ERROR_FILE ${CMAKE_CURRENT_BINARY_DIR}/cutlass_library_installation.log
